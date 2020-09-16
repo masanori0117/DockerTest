@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  web: # Webサーバーコンテナ
+    image: nginx:1.15.6
+    ports:
+      - '8000:80' 
+    volumes:
+      - ./src/src:/var/www/html # 開発ディレクトリを公開ディレクトリにマウント
+      - ./docker/web/default.conf:/etc/niginx/conf.d/default.conf
+    container_name: laravel-app # コンテナ名
+    depends_on:
+      - app # appコンテナと連携
+  
+
+  app: # アプリケーションコンテナ (PHP/Laravel)
+    build: ./docker/web # Dockerfile参照
+    volumes:
+      - ./src/src:/var/www/html # 開発ディレクトリを公開ディレクトリにマウント
+    depends_on:
+      - mysql # mysqlコンテナと連携
+
+  mysql: # データベースコンテナ
+    image: mysql:5.7
+    environment: # DB設定
+      MYSQL_DATABASE: database
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker 
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3306:3306' #3306番ポートで接続
+    container_name: "db-host" 
+
+  phpmyadmin: #PHPMyAdminコンテナ
+    image: phpmyadmin/phpmyadmin:latest
+    links:
+      - mysql # mysqlを参照
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db-host # mysql container_name参照
+      - PMA_USER=docker
+      - PMA_PASSWORD=docker
+    container_name: "phpmyamin-laravel"
