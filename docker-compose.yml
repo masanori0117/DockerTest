@@ -62,4 +62,4 @@ services:
     volumes:
       - ./src/src:/var/www/html
     working_dir: /var/www/html
-    command: "yarn install --dev && npm run watch-poll"
+    command: "yarn install --production && npm run watch-poll"
