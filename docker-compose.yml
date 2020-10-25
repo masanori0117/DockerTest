@@ -11,7 +11,6 @@ services:
     container_name: laravel-app # コンテナ名
     depends_on:
       - app # appコンテナと連携
-  
   app: # アプリケーションコンテナ (PHP/Laravel)
     build: ./docker/web
     volumes:
@@ -50,16 +49,17 @@ services:
       - PMA_USER=docker
       - PMA_PASSWORD=docker
     container_name: "phpmyadmin-laravel"
-
+    
   composer:
     image: composer
     volumes:
       - ./src/src:/app # 開発ディレクトリを公開ディレクトリにマウント
     command: "composer install"
-  
+    
   webpack:
     image: node
     volumes:
       - ./src/src:/var/www/html
     working_dir: /var/www/html
     command: [ "bash", "-c", "yarn install --prod && npm run watch-poll"]
+
