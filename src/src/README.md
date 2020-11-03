@@ -10,13 +10,13 @@
 # DockerTest
 This is a Docker Environment for PHP/Laravel and Vue.js !
 
+
 ## Environments
 * PHP 7.2.34 
 * Laravel 7.27.0
 * composer 2.0.4
 * node v10.23.0
 * npm 6.14.8
-* vue 
 
 ## How to use
 
