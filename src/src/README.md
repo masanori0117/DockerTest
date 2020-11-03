@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-**# DockerTest**
+# DockerTest
 This is a Docker Environment for PHP/Laravel and Vue.js !
 
 ## Environments
@@ -20,32 +20,32 @@ This is a Docker Environment for PHP/Laravel and Vue.js !
 
 ## How to use
 
-### Make directory to start the development
+Make a directory and move to development directory
 ``` 
 $ mkdir docker-laravel && cd docker-laravel
 ```
 
-### git clone
+git clone
 ```
 $ git clone https://github.com/masanori0117/DockerTest.git
 ```
 
-### docker-compose build
 Move to DockerTest directory
 ```
 $ cd DockerTest
 ```
 
+Build the containers
 ```
 $ docker-compose build
 ```
 
-### docker-compose up -d
+Up the containers
 ```
 $ docker-compose up -d
 ```
 
-### docker-compose exec app bash
+Enter the app bash
 ```
 $ docker-compose exec app bash
 ```
@@ -54,7 +54,7 @@ $ docker-compose exec app bash
 This is first time to make Docker environemnt. Please let me know if is there any thing wrong. Thanks!
 
 ## Author
-[masanori0117](https://github.com/masanori0117))
+[masanori0117](https://github.com/masanori0117)
 
 ## License
 This code is under the [MIT license](https://opensource.org/licenses/MIT).
